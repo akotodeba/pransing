@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Love Letter</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #4A90E2, #F7D358);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .note {
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .container {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 90%;
+            width: 600px;
+            animation: fadeIn 2s ease-in;
+            position: relative;
+            z-index: 1;
+        }
+
+        .message {
+            font-size: 0.9em;
+            opacity: 0;
+            transition: opacity 2s ease-in;
+            margin-top: 10px;
+        }
+
+        .slideshow-container {
+            display: none;
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 1em;
+            border: none;
+            background-color: #0056b3;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            z-index: 10;
+            position: relative;
+        }
+
+        button:hover {
+            background-color: #003f7f;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+                width: 100%; /* Full width on smaller screens */
+            }
+
+            button {
+                width: 100%;
+                font-size: 1.2em;
+            }
+
+            .note {
+                font-size: 0.9em;
+            }
+
+            .message {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p class="note">Hey love, I have something special for you! 💙💛</p>
+    <button onclick="showMessage()">Click me for a surprise 😊</button>
+
+    <div class="container" id="letter">
+        <h2>Hi Mahal,</h2>
+        <p class="message">Happy hapyyy monthsaaryyyy!!! Happy 48th monthsss to usss.. I hope tama ako hehe 😊 
+
+            I knoww marami akong naging kasalanan sayo and pagkukulang, sorry poo but i’ll still do my bestt na makuha mo yung deserve mo sa isang tao ket ilang beses mo pang sabihin na “enough ka na” NOOOO! you deserve something, you deserve to be spoil however I can’t provide it pa but I will provide more lovee na langgg huhu sorry for everything. ILOVEYOUUUUSOOMUCHHHH!!! I can still be your bed to rest whenever you’re tired for thinking too much. Mahal na mahal kita and ikaw lang sapat na 😉. Anywaysss I really love ung gift mo so shock pa rn but plsss wag mo ko masyadong pag gastosannnn, pag gastosan mo sarili mo.. ssad ako kasee huhu ambilis ng pera wala nanaman akong hayss pero mali ko un sorry againnn.. Iloveyouuuuusomuch and Thankyouuuu sa lahat lahat 💖</p>
+        
+        <div class="slideshow-container">
+            <img class="slide" src="image1.jpg" alt="Image 1">
+            <img class="slide" src="image2.jpg" alt="Image 2">
+            <img class="slide" src="image3.jpg" alt="Image 3">
+            <img class="slide" src="image4.jpg" alt="Image 4">
+            <img class="slide" src="image5.jpg" alt="Image 5">
+            <img class="slide" src="image6.jpg" alt="Image 6">
+            <img class="slide" src="image7.jpg" alt="Image 7">
+            <img class="slide" src="image8.jpg" alt="Image 8">
+            <img class="slide" src="image9.jpg" alt="Image 9">
+        </div>
+    </div>
+
+    <script>
+        function showMessage() {
+            document.querySelector('button').style.display = 'none';  // Hide the button
+            let letter = document.getElementById('letter');
+            letter.style.display = 'block';  // Show the letter
+            document.querySelector('.slideshow-container').style.display = 'block';  // Show the slideshow
+            setTimeout(() => {
+                document.querySelectorAll('.message').forEach(msg => msg.style.opacity = '1');
+            }, 500);
+            startSlideshow();
+        }
+
+        function startSlideshow() {
+            let slides = document.querySelectorAll('.slide');
+            let index = 0;
+
+            function showNextSlide() {
+                slides.forEach(slide => slide.style.display = 'none');
+                slides[index].style.display = 'block';
+                index = (index + 1) % slides.length;
+                setTimeout(showNextSlide, 2000);
+            }
+
+            showNextSlide();
+        }
+    </script>
+</body>
+</html>
